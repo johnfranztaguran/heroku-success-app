@@ -3,12 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.4.3",
+    "@material-ui/icons": "^4.4.3",
+    "@material-ui/styles": "^4.4.3",
+    "antd": "^3.23.5",
+    "core-js": "^3.2.1",
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
+    "http-proxy-middleware": "^0.20.0",
+    "lodash.get": "^4.4.2",
+    "lodash.keyby": "^4.6.0",
+    "moment": "^2.24.0",
     "path": "^0.12.7",
+    "project-customer-portal-fe": "^1.2.7",
+    "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "node server.js",
