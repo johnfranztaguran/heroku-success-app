@@ -1,11 +1,12 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { Auth, PageHeader, CRUD, StatusDot } from 'project-customer-portal-fe';
+import { Auth, PageHeader, CRUD, StatusDot, Pagination, fetchPagination } from 'project-customer-portal-fe';
 import { Table, notification, Tag, Icon, Tooltip, Spin, Select, Input, Button, Collapse } from 'antd';
 import styled from 'styled-components';
 import CrudStyle from './crudStyle';
 import SpinStyles from './SpinStyle'
 import _get from 'lodash.get';
 import moment from 'moment';
+import ActionsBtn from './styledComponents/actionBtnStyle';
 import BidsModalStyled from './modalTwo.style';
 
 const auth = new Auth();
@@ -21,31 +22,9 @@ const RefreshBtnStyle = styled.div`
   }
 `;
 
-const ActionsBtn = styled.div`
-  .action-btn {
-    color: #40a9ff;
-    opacity: 1;
-    border: 0 none;
-    box-shadow: none;
-    background: transparent;
-    display: flex;
-    padding: 5px;
-    margin-left: 5px;
-
-    &:hover,
-    &:focus {
-      opacity: 2;
-      color: #0e4aed;
-      &.danger {
-        color: #f5222d;
-      }
-    }
-  }
-`;
-
 const Bids = () => {
 
-  const [userDeatails, fetchDetails] = useState([]);
+  const [userDetails, fetchDetails] = useState([]);
   const [userPDF, fetchPDF] = useState(undefined);
   const [optionStatus, getOptionStatus] = useState([]);
   const [isLoaded, dataLoaded] = useState(false);
@@ -55,6 +34,20 @@ const Bids = () => {
   const [{ reason }, setValue] = useState({ reason: '' });
   const [getId, setId] = useState(undefined);
   const [noteReason, showNote] = useState(false);
+  const [modalReason, getReason] = useState('');
+
+  const setPagingUrl = async pageNumber => {
+    try {
+      const userDetails = await fetchPagination('bids', pageNumber);
+      fetchDetails(userDetails);
+    } catch (err) {
+      console.error('Error while fetching data:', err);
+      notification.open({
+        message: 'Something went wrong',
+        description: `Error while fetching: ${err}`
+      });
+    };
+  };
 
   const columns = [
     {
@@ -105,19 +98,14 @@ const Bids = () => {
         const rejectReason = () => {
           return (
             <Fragment>
-              <BidsModalStyled
-                title="Reject Reason Note"
-                visible={!!noteReason}
-                okText="Okay"
-                onOk={() => showNote(false)}
-                onCancel={() => showNote(false)}
-              >
-                {bid_rejection_reason}
-              </BidsModalStyled>
               <Tooltip placement="top" title='Reject Reason'>
                 <a
                   className='action-btn'
-                  onClick={() => showNote(true)}
+                  onClick={() => {
+                    getReason(bid_rejection_reason)
+                    console.log('bids action ===', bid_rejection_reason)
+                    showNote(true)
+                  }}
                 >
                   <Icon type='snippets' />
                 </a>
@@ -178,8 +166,8 @@ const Bids = () => {
 
   const getUserBidsDetails = async () => {
     try {
-      const userDeatails = await auth.getUserBidsDetails();
-      fetchDetails( userDeatails );
+      const userDetails = await auth.getUserBidsDetails();
+      fetchDetails( userDetails );
       dataLoaded(true);
     } catch (err) {
       console.error('Error while fetching data:', err);
@@ -266,6 +254,7 @@ const Bids = () => {
     showOption(false);
     setSelectedValue(null);
     getOptionStatus(null);
+    getReason('')
   }
 
   const handleShowModal = () => {
@@ -306,11 +295,21 @@ const Bids = () => {
   }
 
   const renderListView = () => {
-    const getData = _get(userDeatails, 'data', []);
+    const getData = _get(userDetails, 'data', []);
+    const tableHeight = window.innerHeight < 650 ? 250 : 500
     return (
       <Fragment>
         {isLoaded ? (
           <Fragment>
+            <BidsModalStyled
+                title="Reject Reason Note"
+                visible={!!noteReason}
+                okText="Okay"
+                onOk={() => showNote(false)}
+                onCancel={() => showNote(false)}
+              >
+                {modalReason}
+            </BidsModalStyled>
             <BidsModalStyled
               title="Reject Prompt"
               visible={!!isVisible}
@@ -352,16 +351,14 @@ const Bids = () => {
                 columns={columns}
                 dataSource={getData}
                 pagination={false}
-                scroll={{ y: 650 }}
+                scroll={{ y: tableHeight }}
               />
-              <Button.Group size='small' className='btn-group'>
-                <Button type="primary">
-                  <Icon type="left" />
-                </Button>
-                <Button type="primary">
-                  <Icon type="right" />
-                </Button>
-              </Button.Group>
+              <Pagination
+                postsPerPage={userDetails.per_page}
+                totalPosts={userDetails.total}
+                setPagingUrl={setPagingUrl}
+                currentPage={userDetails.current_page}
+              />
             </RefreshBtnStyle>
           </Fragment>
         ) : (
@@ -371,7 +368,7 @@ const Bids = () => {
     );
   };
 
-  // console.log('User Bids ===', object);
+  console.log('User Bids ===', userDetails);
 
   const renderHeader = controls => <PageHeader controls={controls}>Bids</PageHeader>;
   
