@@ -16,7 +16,7 @@
     "lodash.keyby": "^4.6.0",
     "moment": "^2.24.0",
     "path": "^0.12.7",
-    "project-customer-portal-fe": "^1.2.8",
+    "project-customer-portal-fe": "^1.2.9",
     "prop-types": "^15.7.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
@@ -29,6 +29,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://dev.tritontek.com.ph:81/api/crm/contacts/",
   "eslintConfig": {
     "extends": "react-app"
   },

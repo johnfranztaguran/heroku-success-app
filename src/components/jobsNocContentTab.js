@@ -107,7 +107,6 @@ const JobsNOCContentTab = () => {
                   className='action-btn'
                   onClick={() => {
                     getReason({ modalReason: noc_reject_reason })
-                    console.log('jobs noc action ===', noc_reject_reason)
                     showNote({ noteReason: true })
                   }}
                 >
@@ -139,7 +138,6 @@ const JobsNOCContentTab = () => {
               <a
                 className='action-btn'
                 onClick={() => {
-                  console.log(id)
                   nocApproveAction(id);
                 }}
               >
@@ -222,8 +220,6 @@ const JobsNOCContentTab = () => {
     showNote({ enterReason: false });
     nocDeclineAction();
   }
-
-  console.log('noc details ===', nocDetails);
 
   return (
     <Fragment>

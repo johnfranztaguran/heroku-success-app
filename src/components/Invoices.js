@@ -65,8 +65,6 @@ const Invoices = () => {
 
   const renderHeader = controls => <PageHeader controls={controls}>Invoices</PageHeader>;
 
-  console.log('invoice====', userDetails);
-
   return (
     <CrudStyle>
       <CRUD

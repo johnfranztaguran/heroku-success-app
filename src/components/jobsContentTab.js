@@ -34,7 +34,6 @@ const JobsContentTab = ({ userDeatails }) => {
   }
 
   const collapseChange = key => {
-    console.log(key);
     setActivePanel(key);
   }
 
@@ -128,7 +127,6 @@ const JobsContentTab = ({ userDeatails }) => {
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
   const childCustomPanel = jobs => {
-    // console.log(' job joblines ====', jobSublines);
     return (
       <React.Fragment>
         <Collapse expandIconPosition='right'>

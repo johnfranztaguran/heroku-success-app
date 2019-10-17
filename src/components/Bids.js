@@ -103,7 +103,6 @@ const Bids = () => {
                   className='action-btn'
                   onClick={() => {
                     getReason(bid_rejection_reason)
-                    console.log('bids action ===', bid_rejection_reason)
                     showNote(true)
                   }}
                 >
@@ -367,8 +366,6 @@ const Bids = () => {
       </Fragment>
     );
   };
-
-  console.log('User Bids ===', userDetails);
 
   const renderHeader = controls => <PageHeader controls={controls}>Bids</PageHeader>;
   

@@ -52,7 +52,6 @@ const InvoiceSummary = ({ userDetails }) => {
           <a
             className='action-btn'
             onClick={() => {
-              // console.log('summary details ==', data);
               setRowData(data);
               showModalData(true)
             }}
@@ -66,8 +65,6 @@ const InvoiceSummary = ({ userDetails }) => {
   ];
 
   const tableHeight = window.innerHeight < 650 ? 250 : 500
-
-  console.log('this is summary details ===', rowData);
 
   return (
     <Fragment>

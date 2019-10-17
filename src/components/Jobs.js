@@ -41,8 +41,6 @@ const Jobs = () => {
       </React.Fragment>
     );
   };
-
-  console.log('User Jobs ===', userDeatails);
   const renderHeader = controls => <PageHeader controls={controls}>Jobs</PageHeader>;
 
   return (

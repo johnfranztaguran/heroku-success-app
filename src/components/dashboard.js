@@ -1,9 +1,8 @@
 import React from 'react';
 
 const Dashboard = ({ models  }) => {
-    console.log('=====dashboard', models);
     return (
-        <div>Dashboard</div>
+        <div>Dashboard Coming Soon</div>
     )
 }
  

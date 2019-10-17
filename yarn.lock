@@ -30,6 +30,11 @@
   resolved "https://registry.yarnpkg.com/@ant-design/icons/-/icons-2.1.1.tgz#7b9c08dffd4f5d41db667d9dbe5e0107d0bd9a4a"
   integrity sha512-jCH+k2Vjlno4YWl6g535nHR09PwCEmTBKAG6VqF+rhkrSPRLfgpU2maagwbZPLjaHuU5Jd1DFQ2KJpQuI6uG8w==
 
+"@axetroy/react-download@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@axetroy/react-download/-/react-download-1.1.1.tgz#7203cbb23a6e9d5f01a9787aae13c2229598c289"
+  integrity sha512-fbzQxO5VIwbPF1EzPHJNaXU5Vcf49QUBG6ijVmmOU+UqzcZJgcSTLhJqDOF7ydSYt15Tg6UbpId7YoeVbC6oYg==
+
 "@babel/code-frame@7.5.5", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -8773,10 +8778,10 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-project-customer-portal-fe@^1.2.7:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/project-customer-portal-fe/-/project-customer-portal-fe-1.2.7.tgz#3c131f369feecbd23b7fc02753f8d93596df167d"
-  integrity sha512-L/f8+sbjif8BmjxVnugXFwdtoQ2KXRO9qT8tjSPpvcKAfPR1H2ISuVeQU7XK9TsBpz4ouhYY9n6jHNe3cHXwFw==
+project-customer-portal-fe@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/project-customer-portal-fe/-/project-customer-portal-fe-1.2.9.tgz#f064a148e91600cb54720cda0159398e20dd77be"
+  integrity sha512-nk2YpMUyGT1pAL1ZvTcXVpKo3XGo6VT5T934z2ib0+PCDPEnEP0Dmj/H5l/uGU3FEnbkaJ+MCeVHVBVLs7WoPQ==
   dependencies:
     antd "^3.20.0"
     axios "^0.19.0"
